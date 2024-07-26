@@ -1,3 +1,4 @@
+
 {
     "type": "AdaptiveCard",
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -13,22 +14,21 @@
         {
             "type": "TextBlock",
             "text": "Enter location name:",
-            "wrap": true,
-            "size": "Small"
+            "wrap": true
         },
         {
             "type": "Input.Text",
-            "placeholder": "Location"
+            "placeholder": "Location",
+            "id": "location"
         },
         {
             "type": "ActionSet",
             "actions": [
                 {
                     "type": "Action.Submit",
-                    "title": "Action.Submit",
-                    "style": "positive",
+                    "title": "Get Location",
                     "data": {
-                        "callback_keyword": "locations"
+                        "callback_keyword": "location"
                     }
                 }
             ]

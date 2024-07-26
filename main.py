@@ -1,17 +1,22 @@
-# main.py
-from webex_bot.webex_bot import WebexBot
 import os
-from locations import LocationsCommand
 
-# Get the Webex access token from environment variables
-access_token = os.getenv('WEBEX_ACCESS_TOKEN')
+from webex_bot.webex_bot import WebexBot
 
-# Initialize the bot with the access token
-bot = WebexBot(access_token)
+from weather import Location
 
-# Register the Locations command
-locations_command = LocationsCommand()
-bot.add_command(locations_command)
+# Set Webex API key as the WEBEX_TOKEN environment variable &
+# we'll retrieve that here:
+webex_token = os.environ["WEBEX_ACCESS_TOKEN"]
 
-# Run the bot
+# Bot only needs the Webex token, but optionally we can also
+# restrict who the bot will respond to by user or domain.
+# For example:
+WebexBot(webex_token, approved_users=['mcather@drummondco.com'])
+# Restrict by domain: WebexBot(webex_token, approved_domains=['example.local'])
+bot = WebexBot(webex_token)
+
+# Registed custom command with the bot:
+bot.add_command(Location())
+
+# Connect to Webex & start bot listener:
 bot.run()
