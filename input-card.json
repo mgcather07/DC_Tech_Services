@@ -1,4 +1,3 @@
-
 {
     "type": "AdaptiveCard",
     "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
@@ -6,27 +5,38 @@
     "body": [
         {
             "type": "TextBlock",
-            "text": "Drummond Locations",
+            "text": "Locations",
             "wrap": true,
             "size": "Medium",
             "weight": "Bolder"
         },
         {
             "type": "TextBlock",
-            "text": "Enter location name:",
+            "text": "Select location:",
             "wrap": true
         },
         {
-            "type": "Input.Text",
-            "placeholder": "Location",
-            "id": "location"
+            "type": "Input.ChoiceSet",
+            "id": "location",
+            "style": "compact",
+            "value": "ABC Coke",
+            "choices": [
+                {
+                    "title": "ABC Coke",
+                    "value": "ABC Coke"
+                },
+                {
+                    "title": "Hangar",
+                    "value": "Hangar"
+                }
+            ]
         },
         {
             "type": "ActionSet",
             "actions": [
                 {
                     "type": "Action.Submit",
-                    "title": "Get Location",
+                    "title": "Search",
                     "data": {
                         "callback_keyword": "location"
                     }
