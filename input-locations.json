@@ -1,0 +1,37 @@
+{
+    "type": "AdaptiveCard",
+    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Drummond Locations",
+            "wrap": true,
+            "size": "Medium",
+            "weight": "Bolder"
+        },
+        {
+            "type": "TextBlock",
+            "text": "Enter location name:",
+            "wrap": true,
+            "size": "Small"
+        },
+        {
+            "type": "Input.Text",
+            "placeholder": "Location"
+        },
+        {
+            "type": "ActionSet",
+            "actions": [
+                {
+                    "type": "Action.Submit",
+                    "title": "Action.Submit",
+                    "style": "positive",
+                    "data": {
+                        "callback_keyword": "locations"
+                    }
+                }
+            ]
+        }
+    ]
+}
