@@ -14,8 +14,15 @@ log = logging.getLogger(__name__)
 # we'll retrieve that here:
 webex_token = os.environ["WEBEX_ACCESS_TOKEN"]
 
-# Create an instance of the Webex bot
-bot = WebexBot(webex_token)
+# Define approved users, domains, and rooms
+approved_users = ["Mcather@drummondco.com"]
+
+
+# Create an instance of the Webex bot with approved parameters
+bot = WebexBot(
+    teams_bot_token=webex_token,
+    approved_users=approved_users
+)
 
 # Register custom commands with the bot
 location_command = Location()
@@ -23,7 +30,6 @@ location_command = Location()
 # Add commands to the bot
 bot.add_command(location_command)
 bot.add_command(EchoCommand())
-
 
 # Connect to Webex & start bot listener
 bot.run()
