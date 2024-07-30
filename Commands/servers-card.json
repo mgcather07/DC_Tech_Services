@@ -1,0 +1,28 @@
+{
+    "type": "AdaptiveCard",
+    "version": "1.2",
+    "body": [
+        {
+            "type": "TextBlock",
+            "text": "Select a server to check its status",
+            "weight": "Bolder",
+            "size": "Large"
+        },
+        {
+            "type": "Input.ChoiceSet",
+            "id": "server",
+            "style": "compact",
+            "choices": [
+                { "title": "Unraid", "value": "unraid" },
+                { "title": "Server 2", "value": "server2" },
+                { "title": "Server 3", "value": "server3" }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "type": "Action.Submit",
+            "title": "Check Status"
+        }
+    ]
+}
