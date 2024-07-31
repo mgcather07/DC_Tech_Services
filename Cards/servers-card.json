@@ -13,9 +13,8 @@
             "id": "server",
             "style": "compact",
             "choices": [
-                { "title": "Unraid", "value": "unraid" },
-                { "title": "Server 2", "value": "server2" },
-                { "title": "Server 3", "value": "server3" }
+                { "title": "Publisher", "value": "publisher" },
+                { "title": "ABC Admin Sw", "value": "abc_admin" }
             ]
         }
     ],
