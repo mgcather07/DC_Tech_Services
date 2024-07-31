@@ -7,18 +7,18 @@ import coloredlogs
 import requests
 import webexteamssdk
 
-from webex_bot.commands.echo import EchoCommand
-from webex_bot.commands.help import HelpCommand
-from webex_bot.exceptions import BotException
-from webex_bot.formatting import quote_info
-from webex_bot.models.command import CALLBACK_KEYWORD_KEY, Command, COMMAND_KEYWORD_KEY
-from webex_bot.models.response import Response
-from webex_bot.websockets.webex_websocket_client import WebexWebsocketClient, DEFAULT_DEVICE_URL
+from Bot.commands.echo import EchoCommand
+from Bot.commands.help import HelpCommand
+from Bot.exceptions import BotException
+from Bot.formatting import quote_info
+from Bot.models.command import CALLBACK_KEYWORD_KEY, Command, COMMAND_KEYWORD_KEY
+from Bot.models.response import Response
+from Bot.websockets.webex_websocket_client import WebexWebsocketClient, DEFAULT_DEVICE_URL
 
 log = logging.getLogger(__name__)
 
 
-class WebexBot(WebexWebsocketClient):
+class TechServBot(WebexWebsocketClient):
 
     def __init__(self,
                  teams_bot_token,
@@ -291,7 +291,7 @@ class WebexBot(WebexWebsocketClient):
         # Build the reply to the user
         reply = ""
         reply_one_to_one = False
-        message_without_command = WebexBot.get_message_passed_to_command(command.command_keyword, raw_message)
+        message_without_command = TechServBot.get_message_passed_to_command(command.command_keyword, raw_message)
         thread_parent_id = None
 
         if hasattr(teams_message, "inputs") and teams_message.inputs.get("thread_parent_id"):

@@ -3,8 +3,8 @@ import logging
 import subprocess
 import schedule
 import time
-from webex_bot.models.command import Command
-from webex_bot.models.response import Response
+from Bot.models.command import Command
+from Bot.models.response import Response
 from webexteamssdk import WebexTeamsAPI
 
 log = logging.getLogger(__name__)

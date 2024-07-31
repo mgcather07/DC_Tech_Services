@@ -1,11 +1,11 @@
 import json
 import logging
-from webex_bot.models.command import Command
-from webex_bot.models.response import Response
+from Bot.models.command import Command
+from Bot.models.response import Response
 
 log = logging.getLogger(__name__)
 
-with open("./Cards/input-card.json", "r") as card:
+with open("./Bot/cards/input-card.json", "r") as card:
     INPUT_CARD = json.load(card)
 
 class Location(Command):

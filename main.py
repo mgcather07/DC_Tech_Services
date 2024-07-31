@@ -2,10 +2,10 @@ import os
 import json
 import logging
 import threading
-from webex_bot.webex_bot import WebexBot
-from webex_bot.commands.echo import EchoCommand
-from Commands.location import Location
-from Commands.servers import Servers, run_scheduler
+from Bot.tech_serv_bot import TechServBot
+from Bot.commands.echo import EchoCommand
+from Bot.commands.location import Location
+from Bot.commands.servers import Servers, run_scheduler
 from SQL.db_connection import connect_to_sql_server
 
 # Configure logging
@@ -35,7 +35,7 @@ if db_connection is None:
     exit(1)
 
 # Create an instance of the Webex bot with approved parameters
-bot = WebexBot(
+bot = TechServBot(
     teams_bot_token=webex_token,
     approved_users=approved_users
 )

@@ -4,9 +4,9 @@ from webexteamssdk.models.cards import Colors, TextBlock, FontWeight, FontSize, 
     Text, Image, HorizontalAlignment
 from webexteamssdk.models.cards.actions import Submit
 
-from webex_bot.formatting import quote_info
-from webex_bot.models.command import Command
-from webex_bot.models.response import response_from_adaptive_card
+from Bot.formatting import quote_info
+from Bot.models.command import Command
+from Bot.models.response import response_from_adaptive_card
 
 log = logging.getLogger(__name__)
 

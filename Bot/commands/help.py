@@ -4,8 +4,8 @@ from webexteamssdk.models.cards import Colors, TextBlock, FontWeight, FontSize, 
     ImageSize, Image, Fact
 from webexteamssdk.models.cards.actions import Submit
 
-from webex_bot.models.command import Command, COMMAND_KEYWORD_KEY
-from webex_bot.models.response import response_from_adaptive_card
+from Bot.models.command import Command, COMMAND_KEYWORD_KEY
+from Bot.models.response import response_from_adaptive_card
 
 log = logging.getLogger(__name__)
 
