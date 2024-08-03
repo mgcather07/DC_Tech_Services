@@ -1,34 +1,20 @@
-import pyodbc
+# SQL/db_connection.py
+
+import pymysql
 import logging
-import os
-
-# Configure logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
-
 
 def connect_to_sql_server():
     try:
-        logging.info("Attempting to connect to the SQL Server database.")
-        logging.debug(f"Using server: CORSQLP006")
-        logging.debug(f"Using database: Network_Automation")
-        logging.debug(f"Using UID: {os.environ.get('SQL_USERNAME')}")
-
-        if 'SQL_USERNAME' not in os.environ or 'SQL_PASSWORD' not in os.environ:
-            logging.error("Environment variables for SQL credentials are not set.")
-            return None
-
-        connection_string = (
-            'DRIVER={ODBC Driver 17 for SQL Server};'
-            'SERVER=CORSQLP006;'
-            'DATABASE=Network_Automation;'
-            f'UID={os.environ["SQL_USERNAME"]};'
-            f'PWD={os.environ["SQL_PASSWORD"]}'
+        connection = pymysql.connect(
+            host='192.168.10.12',
+            user='mgcather',     # Your MySQL username
+            password='plexmaster', # Your MySQL password
+            db='Networking',     # Your database name
+            charset='utf8mb4',
+            cursorclass=pymysql.cursors.DictCursor
         )
-        logging.debug(f"Connection string: {connection_string}")
-
-        connection = pyodbc.connect(connection_string)
-        logging.info("Successfully connected to the SQL Server database.")
+        logging.info("Connection to MySQL database established successfully.")
         return connection
-    except pyodbc.Error as err:
-        logging.error(f"Error: {err}")
+    except Exception as e:
+        logging.error(f"Failed to connect to MySQL database: {e}")
         return None

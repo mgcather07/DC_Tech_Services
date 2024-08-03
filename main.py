@@ -4,7 +4,7 @@ import logging
 import threading
 from Bot.tech_serv_bot import TechServBot
 from Bot.commands.echo import EchoCommand
-from Bot.commands.location import Location
+from Bot.commands.switch import Switch
 from Bot.commands.servers import Servers, run_scheduler
 from SQL.db_connection import connect_to_sql_server
 
@@ -18,11 +18,13 @@ webex_token = os.environ["WEBEX_ACCESS_TOKEN"]
 # Correct room ID where you want to send alerts
 room_id = os.environ["WEBEX_ROOM_ID"]
 
+
 # Load approved users from JSON file
 def load_approved_users(file_path):
     with open(file_path, 'r') as file:
         data = json.load(file)
         return data['approved_users']
+
 
 # Use the correct path to the JSON file
 approved_users_file = os.path.join(os.path.dirname(__file__), 'Utils', 'approved_users.json')
@@ -41,17 +43,22 @@ bot = TechServBot(
 )
 
 # Register custom commands with the bot
-location_command = Location()
-servers_command = Servers(access_token=webex_token, room_id=room_id, db_connection=db_connection)
+# location_command = Location(db_connection=db_connection)
+# servers_command = Servers(access_token=webex_token, room_id=room_id, db_connection=db_connection)
+switch_command = Switch(db_connection=db_connection)
+#
 
 # Add commands to the bot
-bot.add_command(location_command)
-bot.add_command(servers_command)
+# bot.add_command(location_command)
+# bot.add_command(servers_command)
+bot.add_command(switch_command)
 bot.add_command(EchoCommand())
+
 
 # Function to run the scheduler in a separate thread
 def start_scheduler():
     run_scheduler(access_token=webex_token, room_id=room_id, db_connection=db_connection)
+
 
 # Create and start the scheduler thread
 scheduler_thread = threading.Thread(target=start_scheduler, daemon=True)

@@ -8,3 +8,4 @@ coloredlogs~=15.0.1
 pyodbc~=5.1.0
 urllib3~=2.2.2
 orionsdk~=0.4.0
+netmiko~=4.4.0
